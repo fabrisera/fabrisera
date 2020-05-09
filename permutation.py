@@ -24,16 +24,16 @@ def select(lis, i):
 			return lis[p]
 	return None		
 
-def goodi(i, lis):
-	for t in lis:
-		if str(i) in t:
+def goodi(i, lis, m):
+	for t in range(m):
+		if str(i) in lis[t]:
 			i += 1
-			goodi(i, lis)
+			goodi(i, lis, m)
 	return i		
 	
-def isgood(i, lis):
-	for t in lis:
-		if str(i) in t:
+def isgood(i, lis, m):
+	for t in range(m):
+		if str(i) in lis[t]:
 			return False
 	return True
 	
@@ -47,8 +47,7 @@ i = 1
 result = [None] * len(a + b)
 
 while int(i) <= 9:
-	print(result)
-	print(i)
+	print(result)	
 	#if the current number is in the right string then select the correct pair
 	if str(i) in b:
 		l = select(s1, i) 
@@ -67,7 +66,7 @@ while int(i) <= 9:
 				m += 1	
 				r = None
 				print(f' 67 is {i}')
-				i = goodi(i, result)
+				i = goodi(i, result, m)
 			#add the digit to r	
 			else:
 				r = r + l[1]
@@ -86,16 +85,18 @@ while int(i) <= 9:
 				m += 1	
 				r = None
 				print(f' 86 is {i}')
-				i = goodi(i, result)
+				i = goodi(i, result, m)
 			#add the digit to r	and chose i to be the last number
 			else:
 				r = r + l[1]
 				result[m] = r
-				i = int(result[m][len(result[m] - 1)])
+				i = int(result[m][len(result[m]) - 1])
 				print(f' 91 is {i}')
 	#if i is not in the right nor in the left string, then			
 	else:
-		i += 1		
+		i = goodi(1, result, m)
+		m += 1
+		result[m] = i		
 
 
 			
