@@ -2,21 +2,40 @@
 i = number which I am iterating
 result[n]= the list of all the results
 used = list of all the used values of i 
-
-
+idea is to split them in a nice way? yes
+so (12)(34) same priority and so 12 21 34 43 like this (324)(324)(3424)(234)(43)(423)
+a and b must be lists of strings they, after splitting, have to turn into pairs so everythin wokrs nicely
 '''
-while True:
-	a = input('Input first permutation: ')
-	b = input('Input second permutation: ')
-	if a.isdigit() or b.isdigit():
-		break
-	print("can only insert digits")	
+import re
+a = str(input('Input first permutation: '))
+b = str(input('Input second permutation: '))
+
+a = re.split("\)\(", a)
+for i in range(len(a)):
+	a[i] = re.sub("\)", "", a[i])
+	a[i] = re.sub("\(", "", a[i])
+
+b = re.split("\)\(", b)
+for i in range(len(b)):
+	b[i] = re.sub("\)", "", b[i])
+	b[i] = re.sub("\(", "", b[i])
+
+
 #splits a string into pairs
 def splitting(a):
-	pair = [None] * len(a)
-	for i in range(len(a)):
-		pair[i] = a[i] + a[(i + 1) % len(a)]
-	return(pair)
+	new = []
+	for i in range(len(a))
+		pair[i] = [None] * len(a[i])
+		for t in range(len(a[i])):
+			pair[i][t] = a[i][t] + a[i][(t + 1) % len(a[i])]
+	for l in pair:
+		for s in l:
+			new.append(s)
+	a = ""		
+	for i in new:
+	a += i		
+
+	return(new)
 
 def select(lis, i):
 	for p in range(len(lis)):

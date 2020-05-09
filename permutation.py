@@ -2,13 +2,20 @@
 
 1) taking user input: 
 '''
+import re
+a = str(input('Input first permutation: '))
+b = str(input('Input second permutation: '))
 
-while True:
-	a = input('Input first permutation: ')
-	b = input('Input second permutation: ')
-	if a.isdigit() or b.isdigit():
-		break
-	print("can only insert digits")	
+a = re.split("\)\(", a)
+for i in range(len(a)):
+	a[i] = re.sub("\)", "", a[i])
+	a[i] = re.sub("\(", "", a[i])
+
+b = re.split("\)\(", b)
+for i in range(len(b)):
+	b[i] = re.sub("\)", "", b[i])
+	b[i] = re.sub("\(", "", b[i])
+
 
 #splits a string into pairs
 def splitting(a):
