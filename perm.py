@@ -14,34 +14,29 @@ a = re.split("\)\(", a)
 for i in range(len(a)):
 	a[i] = re.sub("\)", "", a[i])
 	a[i] = re.sub("\(", "", a[i])
-
+a_1 = a
 b = re.split("\)\(", b)
 for i in range(len(b)):
 	b[i] = re.sub("\)", "", b[i])
 	b[i] = re.sub("\(", "", b[i])
 
-
 #splits a string into pairs
 def splitting(a):
 	new = []
-	for i in range(len(a))
+	pair = [None] * len(a)
+	for i in range(len(a)):
 		pair[i] = [None] * len(a[i])
 		for t in range(len(a[i])):
 			pair[i][t] = a[i][t] + a[i][(t + 1) % len(a[i])]
 	for l in pair:
 		for s in l:
-			new.append(s)
-	a = ""		
-	for i in new:
-	a += i		
-
+			new.append(s)	
 	return(new)
 
 def select(lis, i):
 	for p in range(len(lis)):
 		if str(i) == lis[p][0]:
 			return int(lis[p][1])
-	return print("select returns None")		
 
 used = []
 #selects the correct value for i
@@ -54,6 +49,12 @@ def righti(used):
 
 
 def multiply(a, b, left = splitting(a), right = (splitting(b)), i = righti(used), n = 0):
+	a = ""	
+	b = ""	
+	for q in left:
+		a += q	
+	for q in right:
+		b += q	
 	result = []
 	for p in range(9):
 		result.append('')
@@ -117,13 +118,15 @@ def printing(result, a):
 #normal multiplication ab
 first = multiply(a, b, left = splitting(a), right = (splitting(b)), i = righti(used), n = 0)
 printing(first, a = 'ab')
+print(first)
 
 used = []
 #normal multiplication ba
 second = multiply(b, a, left = splitting(b), right = (splitting(a)), i = righti(used), n = 0)
 printing(second, a = 'ba')
 
-
-
+used = []
+#special multiplication aba^(-1)
+third = multiply(first,)
 
 		
