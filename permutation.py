@@ -5,6 +5,7 @@
 import re
 a = str(input('Input first permutation: '))
 b = str(input('Input second permutation: '))
+c = "testing"
 
 a = re.split("\)\(", a)
 for i in range(len(a)):
