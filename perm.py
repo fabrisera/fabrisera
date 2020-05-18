@@ -19,20 +19,15 @@ b = re.split("\)\(", b)
 for i in range(len(b)):
 	b[i] = re.sub("\)", "", b[i])
 	b[i] = re.sub("\(", "", b[i])
-b_1 = b	
 
 #splits a string into pairs
-def splitting(a, reverse):
+def splitting(a):
 	new = []
 	pair = [None] * len(a)
 	for i in range(len(a)):
 		pair[i] = [None] * len(a[i])
-		if reverse == False:
-			for t in range(len(a[i])):
-				pair[i][t] = a[i][t] + a[i][(t + 1) % len(a[i])]
-		else:
-			for t in range(len(a[i])):
-				pair[i][t] = a[i][::-1][t] + a[i][::-1][(t + 1) % len(a[i])]					
+		for t in range(len(a[i])):
+			pair[i][t] = a[i][t] + a[i][(t + 1) % len(a[i])]
 	for l in pair:
 		for s in l:
 			new.append(s)	
@@ -53,7 +48,7 @@ def righti(used):
 	return(i)			
 
 
-def multiply(a, b, left = splitting(a, reverse = False), right = (splitting(b, reverse = False)), i = righti(used), n = 0):
+def multiply(a, b, left = splitting(a), right = (splitting(b)), i = righti(used), n = 0):
 	a = ""	
 	b = ""	
 	for q in left:
@@ -103,16 +98,14 @@ def multiply(a, b, left = splitting(a, reverse = False), right = (splitting(b, r
 					result[n] += str(i)			
 		else:	
 			i = righti(used)
-	#delete from result the one cyle permutations and return		
 	for r in reversed(result):
 		if len(r) <= 1:
 			result.remove(r)		
 	return(result)		
 
 def printing(result, a):
-	#if no cycle, then we have the identity
 	if len(result) == 0:
-		 print(f"{a}: I")
+		 print(f"{a}: identity")
 	else:
 		print(f'{a}: ' , end = '')
 		for r in result:
@@ -125,19 +118,16 @@ def printing(result, a):
 #normal multiplication ab
 first = multiply(a, b)
 printing(first, a = 'ab')
+print(first)
 
 used = []
 #normal multiplication ba
-second = multiply(b, a, left = splitting(b, reverse = False), right = splitting(a, reverse = False), i = righti(used), n = 0)
+second = multiply(b, a)
 printing(second, a = 'ba')
 
 used = []
 #special multiplication aba^(-1)
-#a_1 must be a list, not
-third = multiply(first, a_1[0][::-1], left = splitting(first, reverse = False), right = splitting(a_1, reverse = True), i = righti(used), n = 0)
-printing(third, a = 'aba^(-1)')
-
-used = []
-#special multiplication bab^(-1)
-forth = multiply(second, b_1[0][::-1], left = splitting(second, reverse = False), right = splitting(b_1, reverse = True), i = righti(used), n = 0)
-printing(forth, a = 'bab^(-1)')
+print(f"here {a_1[0][::-1]}")
+third = multiply(first, a_1[0][::-1], left = splitting(first), right = splitting(a_1[0][::-1]), i = righti(used), n = 0)
+print(third)
+printing(third, a = 'aba')
