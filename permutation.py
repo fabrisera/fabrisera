@@ -1,6 +1,6 @@
 ''' ideas for the permutation
 
-1) taking user input: 
+1) taking user input:
 '''
 import re
 a = str(input('Input first permutation: '))
