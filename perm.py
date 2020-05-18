@@ -10,7 +10,7 @@ import re
 a = str(input('Input first permutation: '))
 b = str(input('Input second permutation: '))
 
-a = re.split("\)\(", a)
+a=re.split("\)\(", a)
 for i in range(len(a)):
 	a[i] = re.sub("\)", "", a[i])
 	a[i] = re.sub("\(", "", a[i])
@@ -116,17 +116,18 @@ def printing(result, a):
 
 
 #normal multiplication ab
-first = multiply(a, b, left = splitting(a), right = (splitting(b)), i = righti(used), n = 0)
+first = multiply(a, b)
 printing(first, a = 'ab')
 print(first)
 
 used = []
 #normal multiplication ba
-second = multiply(b, a, left = splitting(b), right = (splitting(a)), i = righti(used), n = 0)
+second = multiply(b, a)
 printing(second, a = 'ba')
 
 used = []
 #special multiplication aba^(-1)
-third = multiply(first,)
-
-		
+print(f"here {a_1[0][::-1]}")
+third = multiply(first, a_1[0][::-1], left = splitting(first), right = splitting(a_1[0][::-1]), i = righti(used), n = 0)
+print(third)
+printing(third, a = 'aba')
