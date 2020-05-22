@@ -1,7 +1,28 @@
 tst = int(input())
+#iterate for every test case
 for i in range(tst):
     size = int(input())
     arr = list(map(int, input().split()))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    '''
     list = []
     temp = []
     p = 0
@@ -20,3 +41,4 @@ for i in list:
         temp = arr[i[1]]   
     volume += temp * (i[1] - i[0])
     for q in range((i[1] - i[0]) - 2)     
+'''
