@@ -8,8 +8,7 @@ while number != 4:
         number = int(number / 2)
     else:
         number = number * 3 + 1
-    print(f"{number},", end = "")
+    print(number)
     count += 1 
-print(f"\n{count}")    
-
-            
+print("The total number of steps are:")    
+print(count) 
