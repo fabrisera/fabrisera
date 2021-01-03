@@ -1,3 +1,4 @@
+#this is a super short program that allows to test the Collatz Conjecture
 number = int(input("Begin here: "))
 count = 0
 if number == 4:
