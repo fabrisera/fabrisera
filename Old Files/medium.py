@@ -14,15 +14,10 @@ def minimumBribes(arr):
     #iterate over the array in reverse order
     i = len(arr) - 1
     count = 0
-<<<<<<< HEAD
-    while  i > 0:
-        if arr[i] == i + 1:
-=======
     d = 0
     while i >= 0:   
         i = len(arr) - 1 - d
         while arr[i] == i + 1:
->>>>>>> 0d918970fbedb8a716d2c27af2342197b9fc9c55
             i -= 1
             d += 1
         if i < 0:
