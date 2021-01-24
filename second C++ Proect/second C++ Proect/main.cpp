@@ -1,14 +1,28 @@
-//
-//  main.cpp
-//  second C++ Proect
-//
-//  Created by Fabrizio Serafini on 1/10/21.
-//
-
+#include <array>
 #include <iostream>
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+#include <string_view>
+#include <tuple>
+#include <type_traits>
+ 
+namespace a::b::c
+{
+    inline constexpr std::string_view str{ "hello" };
+}
+ 
+template <class... T>
+std::tuple<std::size_t, std::common_type_t<T...>> sum(T... args)
+{
+    return { sizeof...(T), (args + ...) };
+}
+ 
+int main()
+{
+    auto [iNumbers, iSum]{ sum(1, 2, 3) };
+    std::cout << a::b::c::str << ' ' << iNumbers << ' ' << iSum << '\n';
+ 
+    std::array arr{ 1, 2, 3 };
+ 
+    std::cout << std::size(arr) << '\n';
+ 
     return 0;
 }
